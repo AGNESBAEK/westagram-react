@@ -1,6 +1,19 @@
 import React from "react";
+import "./Main.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faMagnifyingGlass,
+  faGear,
+  faEllipsis,
+  faArrowUpFromBracket,
+} from "@fortawesome/free-solid-svg-icons";
+import {
+  faBookmark,
+  faComment,
+  faHeart,
+} from "@fortawesome/free-regular-svg-icons";
 
-const Main = () => {
+function Main() {
   return (
     <>
       <header>
@@ -10,7 +23,10 @@ const Main = () => {
             <a href="/">WESTAGRAM</a>
           </div>
           <div className="searchBar">
-            <i className="fa-solid fa-magnifying-glass"></i>
+            <FontAwesomeIcon
+              icon={faMagnifyingGlass}
+              className="faMagnifyingGlass"
+            />
             <input type="text" placeholder="검색" />
             <div className="searchBarMenu">
               <div className="resultBoxTriangle none"></div>
@@ -41,11 +57,11 @@ const Main = () => {
               <span>프로필</span>
             </li>
             <li className="navProfileMenu">
-              <i className="fa-regular fa-bookmark"></i>
+              <FontAwesomeIcon icon={faBookmark} className="faBookmark" />
               <span>저장됨</span>
             </li>
             <li className="navProfileMenu">
-              <i className="fa-solid fa-gear"> </i>
+              <FontAwesomeIcon icon={faGear} className="fa-gear" />
               <span>설정</span>
             </li>
             <li className="navProfileMenu">로그아웃</li>
@@ -64,22 +80,25 @@ const Main = () => {
               <span>jy_baek</span>
             </div>
             <div className="topIcon">
-              <i className="fa-solid fa-ellipsis"></i>
+              <FontAwesomeIcon icon={faEllipsis} className="faEllipsis" />
             </div>
           </div>
 
           <div className="image">
-            <img src="img/feed.jpg" />
+            <img src="/images/feed.jpg" alt="" />
           </div>
 
           <div className="feed-icons">
             <div className="feed-icons-left">
-              <i className="fa-regular fa-heart"></i>
-              <i className="fa-regular fa-comment"></i>
-              <i className="fa-solid fa-arrow-up-from-bracket"></i>
+              <FontAwesomeIcon icon={faHeart} className="faHeart" />
+              <FontAwesomeIcon icon={faComment} className="faComment" />
+              <FontAwesomeIcon
+                icon={faArrowUpFromBracket}
+                className="faArrowUpFromBracket"
+              />
             </div>
             <div className="feed-icons-right">
-              <i className="fa-regular fa-bookmark"></i>
+              <FontAwesomeIcon icon={faBookmark} className="faBookmark" />
             </div>
           </div>
 
@@ -106,7 +125,7 @@ const Main = () => {
               <span className="comment-account">neceosecius</span>
               <span>거봐 좋았잖아~</span>
               <button>삭제</button>
-              <i className="fa-regular fa-heart"></i>
+              <FontAwesomeIcon icon={faHeart} className="faHeart" />
             </li>
           </ul>
 
@@ -220,6 +239,6 @@ const Main = () => {
       </main>
     </>
   );
-};
+}
 
 export default Main;

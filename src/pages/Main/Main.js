@@ -11,6 +11,7 @@ import {
   faBookmark,
   faComment,
   faHeart,
+  faUser,
 } from "@fortawesome/free-regular-svg-icons";
 
 function Main() {
@@ -19,7 +20,7 @@ function Main() {
       <header>
         <nav id="nav-bar">
           <div className="logo">
-            <img src={"/images/instagram.png"} alt={"logo"} />
+            <img src="/images/instagram.png" alt="logo" />
             <a href="/">WESTAGRAM</a>
           </div>
           <div className="searchBar">
@@ -53,7 +54,7 @@ function Main() {
           <div className="navProfileTriangle disabled"></div>
           <ul className="navProfileMenuBar disabled">
             <li className="navProfileMenu">
-              <i className="fa-regular fa-user"></i>
+              <FontAwesomeIcon icon={faUser} className="faUser" />
               <span>프로필</span>
             </li>
             <li className="navProfileMenu">
@@ -114,7 +115,7 @@ function Main() {
           </div>
 
           <div className="contents">
-            <a>jy_baek</a>
+            <a href="/">jy_baek</a>
             <span>위워크에서 진행된 베이킹 클래스...</span>
             <span>더 보기</span>
             <div>42분 전</div>

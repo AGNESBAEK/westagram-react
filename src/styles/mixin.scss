@@ -1,0 +1,49 @@
+@mixin flexCenter($align, $justify) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+@mixin flexColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin absoluteLeft($top, $left) {
+  position: absolute;
+  top: $top;
+  left: $left;
+}
+
+@mixin absoluteRight($top, $right) {
+  position: absolute;
+  top: $top;
+  right: $right;
+}
+
+@mixin widthHeight($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin fontAwesome {
+  font-size: 20px;
+  padding: 0 5px;
+}
+
+@mixin nthChild {
+  &:first-child {
+    font-weight: 600;
+  }
+
+  &:nth-child(2) {
+    font-size: 14px;
+    color: $grayColor;
+  }
+}
+
+@mixin triangle($color) {
+  border-left: 10px solid transparent;
+  border-bottom: 10px solid $color;
+  border-right: 10px solid transparent;
+}

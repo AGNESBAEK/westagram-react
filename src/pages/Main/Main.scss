@@ -1,66 +1,36 @@
 @import url("https://fonts.googleapis.com/css2?family=Lobster&family=Noto+Sans:wght@300&display=swap");
-
-:root {
-  /* spacing-size */
-  --spacing: 30px;
-  --header-size-top: 10px;
-  --header-size-side: 10px;
-  --account-left-size: 12px;
-  --account-info-top: 5px;
-  /*--spacing-small: 6px;
-    --avatar-size: 36px;*/
-
-  /* Color */
-  --border-color: #ebedf0;
-  --background-color: #f2f3f5;
-  --white-color: #ffffff;
-  --gray-color: rgb(115, 115, 115);
-
-  /* font-size*/
-  --account-size: 14px;
-}
-
-* {
-  font-size: 14px;
-}
+@import "../../styles/variables.scss", "../../styles/mixin.scss",
+  "../../styles/reset.scss", "../../styles/common.scss";
 
 header {
   width: 100%;
   position: fixed;
-  top: 0;
-  background-color: #ffffff;
+  background-color: $whiteColor;
 }
 
-/*nav-bar*/
 #nav-bar {
-  display: flex;
-  width: 85%;
-  height: 60px;
-  justify-content: space-between;
-  align-items: center;
+  @include flexCenter(center, space-between);
+  @include widthHeight(85%, 60px);
   padding: 0 10px;
   margin: auto;
   position: relative;
 }
 
 .logo {
-  display: flex;
-  align-items: center;
+  @include flexCenter(center, null);
   padding-left: 10px;
 
   img {
-    width: 30px;
-    height: 90%;
+    @include widthHeight(30px, 90%);
     margin-right: 20px;
   }
 
   a {
-    font-family: var(--logo-font);
     border-left: solid 1px rgb(0, 0, 0);
-    text-decoration: none;
     padding-left: 20px;
     color: rgb(0, 0, 0);
     font-size: 20px;
+    font-family: $logoFont;
   }
 }
 
@@ -69,22 +39,15 @@ header {
   width: 300px;
 
   .faMagnifyingGlass {
+    @include absoluteLeft(5px, 30px);
     width: 10px;
-    position: absolute;
-    top: 5px;
-    left: 30px;
   }
 }
 
 .resultBoxTriangle {
-  width: 0;
-  height: 0;
-  border-left: 10px solid transparent;
-  border-top: 10px solid var(--background-color);
-  border-right: 10px solid transparent;
-  position: absolute;
-  top: 23px;
-  left: 50%;
+  @include widthHeight(0, 0);
+  @include triangle($backgroundColor);
+  @include absoluteLeft(23px, 50%);
 
   .none {
     display: none;
@@ -92,77 +55,52 @@ header {
 }
 
 .resultBox {
+  @include absoluteLeft(20px, calc(50% - 150px));
+  @include flexColumn;
   width: 100%;
-  position: absolute;
-  top: 20px;
-  left: calc(50% - 150px);
-  background-color: var(--background-color);
+  background-color: $backgroundColor;
   z-index: 1;
-  list-style: none;
-  padding: 0 var(--header-size-side);
-  display: flex;
-  flex-direction: column;
+  padding: 0 $headerSizeSide;
 
   li {
-    display: flex;
-    align-items: center;
+    @include flexCenter(center, none);
     width: 100%;
-    padding: var(--account-info-top) var(--header-size-side);
+    padding: $accountInfoTop $headerSizeSide;
     position: relative;
   }
 }
 
 .filtered-image {
-  width: 30px;
-  height: 30px;
+  @include widthHeight(30px, 30px);
   border-radius: 50%;
 }
 
 .result-account {
-  display: flex;
+  @include flexColumn;
   height: 100%;
-  flex-direction: column;
-  font-family: var(--text-font);
-  padding: 0 var(--account-left-size);
+  padding: 0 $accountLeftSize;
 
   p {
-    margin: 0;
-
-    &:first-child {
-      font-weight: 600;
-    }
-
-    &:nth-child(2) {
-      font-size: 12px;
-      font-family: var(--text-font);
-      color: var(--gray-color);
-    }
+    @include nthChild;
   }
 }
 
 .searchBar input {
+  @include widthHeight(100%, 25px);
   text-align: center;
-  background-color: var(--background-color);
-  border: transparent;
-  height: 25px;
-  width: 100%;
+  background-color: $backgroundColor;
 }
 
 .nav-right img {
-  width: 30px;
-  height: 90%;
+  @include widthHeight(30px, 90%);
   margin: 0px 5px;
 }
 
-/*NAV PROFILE*/
 .navProfileMenuBar {
-  list-style: none;
-  position: absolute;
-  top: 70px;
-  right: 8%;
+  @include absoluteRight(70px, 8%);
   padding-left: 0;
   margin: 0;
-  border: 1px solid var(--white-color);
+  border: 1px solid $whiteColor;
   border-radius: 2px;
 }
 
@@ -170,14 +108,14 @@ header {
   padding: 5px 60px 5px 20px;
   text-align: start;
   z-index: 1;
-  background-color: var(--white-color);
+  background-color: $whiteColor;
 
   span {
     padding: 10px 0 5px 10px;
   }
 
   &:last-child {
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid $borderColor;
   }
 
   &.disabled {
@@ -185,142 +123,94 @@ header {
   }
 
   .navProfileTriangle {
-    width: 0;
-    height: 0;
-    border-left: 10px solid transparent;
-    border-bottom: 10px solid var(--white-color);
-    border-right: 10px solid transparent;
-    position: absolute;
-    top: 60px;
-    right: 9%;
+    @include widthHeight(0, 0);
+    @include triangle($whiteColor);
+    @include absoluteRight(60px, 9%);
   }
 }
 
-/*MAIN*/
 main {
-  padding: 80px var(--spacing) 60px var(--spacing);
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
-  background-color: var(--background-color);
+  @include flexCenter(null, center);
+  padding: 80px $spacing 60px $spacing;
+  background-color: $backgroundColor;
   height: 100%;
 }
 
 .feeds {
-  border: 1px solid var(--border-color);
+  @include widthHeight(35%, 90%);
+  border: 1px solid $borderColor;
   margin: 0 20px;
-  width: 35%;
-  background-color: var(--white-color);
-  height: 90%;
+  background-color: $whiteColor;
 }
 
-/*MAIN LEFT SECTION - top*/
 .top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--header-size-top) var(--header-size-side);
+  @include flexCenter(center, space-between);
+  padding: $headerSizeTop $headerSizeSide;
 }
 
 .topLogo {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include flexCenter(center, space-between);
 
   img {
-    width: 30px;
-    height: 30px;
+    @include widthHeight(30px, 30px);
     border-radius: 50%;
   }
 
   span {
-    padding-left: var(--account-left-size);
-    font-family: var(--text-font);
-    font-size: var(--account-size);
+    padding-left: $accountLeftSize;
     font-weight: 600;
   }
 }
 
-/*MAIN LEFT SECTION - image*/
 .image {
   img {
-    width: 100%;
-    height: 600px;
+    @include widthHeight(100%, 600px);
   }
 }
 
-/*MAIN LEFT SECTION - icons*/
 .feed-icons {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 0 var(--header-size-side);
-  height: 35px;
+  @include flexCenter(center, space-between);
+  @include widthHeight(100%, 35px);
+  padding: 0 $headerSizeSide;
 
-  .faHeart {
-    font-size: 20px;
-    padding: 0 5px;
-  }
-
-  .faComment {
-    font-size: 20px;
-    padding: 0 5px;
-  }
-
-  .faBookmark {
-    font-size: 20px;
-    padding: 0 5px;
-  }
-
+  .faHeart,
+  .faComment,
+  .faBookmark,
   .faArrowUpFromBracket {
-    font-size: 20px;
-    padding: 0 5px;
+    @include fontAwesome;
   }
 }
 
-/*MAIN LEFT SECTION - likes*/
 .likes {
-  display: flex;
-  align-items: center;
-  padding: var(--header-size-top) var(--header-size-side);
+  @include flexCenter(center, null);
+  padding: $headerSizeTop $headerSizeSide;
 
   img {
-    width: 30px;
-    height: 30px;
+    @include widthHeight(30px, 30px);
     border-radius: 50%;
     display: inline-block;
   }
 
   span {
-    padding-left: var(--account-left-size);
-    font-family: var(--text-font);
+    padding-left: $accountLeftSize;
   }
 
   .likesInfo {
-    padding-left: var(--account-left-size);
-    font-family: var(--text-font);
-    font-weight: 600;
     padding-left: 0;
+    font-weight: 600;
   }
 }
 
-/*MAIN LEFT SECTION - contents*/
 .contents {
-  padding: var(--header-size-top) var(--header-size-side);
+  padding: $headerSizeTop $headerSizeSide;
 
-  a {
-    text-decoration: none;
+  span:first-child {
     font-weight: 600;
-    font-family: var(--text-font);
   }
 
   span {
-    font-family: var(--text-font);
-    font-size: var(--account-size);
-
     &:nth-child(3) {
-      color: var(--gray-color);
+      color: $grayColor;
     }
   }
 
@@ -330,250 +220,179 @@ main {
   }
 }
 
-/*MAIN LEFT SECTION - comment-list*/
 .commentList {
-  padding: 0 var(--header-size-side);
+  padding: 0 $headerSizeSide;
   margin: 2px 0;
 
   li {
-    list-style: none;
     padding-left: 0px;
     margin-left: 5px;
     position: relative;
-    font-size: 14px;
     word-wrap: break-word;
   }
 
   button {
-    background-color: transparent;
-    border: none;
-    margin-left: 10px;
-    margin-right: 5px;
-    position: absolute;
-    right: 20px;
+    margin: 0 5px 0 10px;
+    @include absoluteRight(0, 20px);
   }
 
   .faHeart {
-    background-color: transparent;
-    border: none;
-    margin-left: 10px;
-    position: absolute;
-    top: 4px;
-    right: 10px;
+    @include absoluteRight(4px, 10px);
+    margin-left: 100px;
   }
 }
 
 span.comment-account {
   font-weight: 600;
-  font-family: var(--text-font);
 }
 
-/*MAIN LEFT SECTION - comment*/
 .comment {
-  display: flex;
-  align-items: center;
-  padding: var(--header-size-top) var(--header-size-side);
+  @include flexCenter(center, null);
+  padding: $headerSizeTop $headerSizeSide;
   width: 100%;
   text-align: center;
   position: relative;
 
   input {
-    width: 100%;
-    height: 30px;
-    background-color: transparent;
+    @include widthHeight(100%, 30px);
     padding-left: 5px;
-    border: none;
   }
 
   button {
-    position: absolute;
-    top: 10px;
-    border: none;
-    background-color: transparent;
-    right: var(--header-size-side);
-    bottom: var(--header-size-top);
+    @include absoluteRight(10px, $headerSizeSide);
+    bottom: $headerSizeTop;
     font-weight: bold;
-    font-family: var(--text-font);
   }
 }
 
-/*MAIN RIGHT SECTION*/
 .main-right {
-  width: 30%;
-  height: 90%;
+  @include flexCenter(center, null);
+  @include widthHeight(30%, 90%);
   margin: 0 20px;
-  display: flex;
   flex-direction: column;
-  align-items: center;
 }
-/*MAIN RIGHT SECTION-account*/
+
 .account {
-  display: flex;
+  @include flexCenter(center, null);
   width: 80%;
-  align-items: center;
-  padding: var(--header-size-top) 0;
+  padding: $headerSizeTop 0;
 
   img {
-    width: 40px;
-    height: 40px;
+    @include widthHeight(40px, 40px);
     border-radius: 50%;
   }
 }
 
 .account-info {
-  display: flex;
+  @include flexColumn;
   height: 100%;
-  flex-direction: column;
-  padding: 0 var(--account-left-size);
+  padding: 0 $accountLeftSize;
 
   p {
     margin: 0;
-    &:first-child {
-      font-weight: 600;
-    }
-    &:nth-child(2) {
-      font-size: 14px;
-      font-family: var(--text-font);
-      color: var(--gray-color);
-    }
+    @include nthChild;
   }
 }
 
-/*MAIN RIGHT SECTION-story*/
 .story {
   background-color: #ffffff;
-  border: 1px solid var(--border-color);
+  border: 1px solid $borderColor;
   width: 80%;
   margin-top: 20px;
 }
 
 .story-header {
-  display: flex;
-  justify-content: space-between;
-  padding: var(--header-size-top) var(--header-size-side);
-  align-items: center;
+  @include flexCenter(center, space-between);
+  padding: $headerSizeTop $headerSizeSide;
 
   p {
     margin: 0;
-    font-family: var(--text-font);
     font-weight: 600;
   }
 
   span {
-    font-family: var(--text-font);
-    color: var(--gray-color);
+    color: $grayColor;
   }
 }
 
 .story-list {
-  list-style: none;
-  padding: 0 var(--header-size-side);
+  padding: 0 $headerSizeSide;
 
   li {
-    display: flex;
-    align-items: center;
-    padding: var(--account-info-top) var(--header-size-side);
+    @include flexCenter(center, null);
+    padding: $accountInfoTop $headerSizeSide;
   }
 
   img {
-    width: 30px;
-    height: 30px;
+    @include widthHeight(30px, 30px);
     border-radius: 50%;
   }
 }
 
 .account-detail {
-  margin: 0 var(--account-left-size);
-  font-family: var(--text-font);
+  margin: 0 $accountLeftSize;
 
-  :first-child {
-    font-weight: 600;
-  }
-
-  :nth-child(2) {
-    font-size: 12px;
-    color: grey;
+  p {
+    @include nthChild;
   }
 }
 
-/*MAIN RIGHT SECTION-recommend*/
 .recommend {
   background-color: #ffffff;
   margin-top: 20px;
-  border: 1px solid var(--border-color);
+  border: 1px solid $borderColor;
   width: 80%;
 }
 
 .recommend-header {
-  display: flex;
-  justify-content: space-between;
-  padding: var(--header-size-top) var(--header-size-side);
-  align-items: center;
+  @include flexCenter(center, space-between);
+  padding: $headerSizeTop $headerSizeSide;
 
   p {
     margin: 0;
     font-weight: 600;
-    font-family: var(--text-font);
   }
 
   span {
-    font-family: var(--text-font);
-    color: var(--gray-color);
+    color: $grayColor;
   }
 }
 
 .recommend-list {
-  list-style: none;
-  padding: 0 var(--header-size-side);
+  padding: 0 $headerSizeSide;
 
   li {
-    display: flex;
-    align-items: center;
+    @include flexCenter(center, null);
     width: 100%;
-    padding: var(--account-info-top) var(--header-size-side);
+    padding: $headerSizeTop $headerSizeSide;
     position: relative;
   }
 }
 
 .recommend-account {
-  display: flex;
+  @include flexColumn;
   height: 100%;
-  flex-direction: column;
-  font-family: var(--text-font);
-  padding: 0 var(--account-left-size);
+  padding: 0 $accountLeftSize;
 
   p {
-    margin: 0;
-    &:first-child {
-      font-weight: 600;
-      &:nth-child(2) {
-        font-size: 12px;
-        font-family: var(--text-font);
-        color: var(--gray-color);
-      }
-    }
+    @include nthChild;
   }
 }
 
 .recommend-list {
   img {
-    width: 30px;
-    height: 30px;
+    @include widthHeight(30px, 30px);
     border-radius: 50%;
   }
 
   button {
-    background-color: transparent;
-    border: none;
     color: rgb(0, 149, 246);
-    position: absolute;
-    right: var(--header-size-side);
+    @include absoluteRight(0, $headerSizeSide);
   }
 }
-/*MAIN RIGHT SECTION-footer*/
+
 .footer {
   width: 80%;
   margin-top: 20px;
-  font-family: var(--text-font);
   color: rgb(199, 199, 199);
 }

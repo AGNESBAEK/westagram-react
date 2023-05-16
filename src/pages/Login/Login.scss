@@ -1,62 +1,70 @@
 @import url("https://fonts.googleapis.com/css2?family=Lobster&family=Noto+Sans:wght@300&display=swap");
+@import "../../styles/variables.scss";
+@import "../../styles/mixin.scss";
+@import "../../styles/reset.scss";
+@import "../../styles/common.scss";
 
 .login {
-  border: 1px solid rgb(219, 219, 219);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  display: flex;
-  flex-direction: column;
+  @include absoluteLeft(50%, 50%);
+  @include flexColumn;
+  @include widthHeight(350px, 400px);
   align-items: center;
   margin: auto;
-  margin-top: -200px;
-  margin-left: -175px;
-  width: 350px;
-  height: 400px;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgb(219, 219, 219);
   border-radius: 1px;
-  p {
-    font-family: "Lobster", cursive;
+
+  .title {
+    margin: 30px 0;
+    font-family: $logoFont;
     text-align: center;
     font-size: 3em;
-    margin: 30px 0;
   }
 
-  input {
-    background-color: #fafafa;
-    margin: 5px 0;
-    border: 1px solid rgb(219, 219, 219);
-    width: 75%;
-    height: 36px;
-    padding: 0px 8px;
-    border-radius: 3px;
-    color: rgb(0, 0, 0);
-  }
-
-  #user_id {
+  .idInput {
     margin-top: 15px;
   }
 
-  a {
-    text-decoration: none;
+  input {
+    @include widthHeight(75%, 36px);
+    margin: 5px 0;
+    padding: 0px 8px;
+    border: 1px solid rgb(219, 219, 219);
+    background-color: #fafafa;
+    border-radius: 3px;
+  }
+
+  button {
+    @include widthHeight(200px, 30px);
+    margin: 8px 0;
+    border: 1px rgba(202, 224, 249, 1) solid;
+    border-radius: 3px;
+    color: white;
+    background-color: #4cb5f9;
+    opacity: 0.5;
+  }
+
+  .ask {
     position: absolute;
     bottom: 20px;
     font-size: 14px;
+    text-decoration: none;
     color: rgb(0, 55, 107);
   }
 }
 
-#login_btn {
-  background-color: #0095f6;
-  border: #0095f6;
-  margin: 8px 0;
-  color: white;
-  height: 30px;
-  opacity: 1;
-  border-radius: 3px;
-}
+//  #login_btn_disabled {
+//    background-color: #4cb5f9;
+//    border: 1px rgba(202, 224, 249, 1) solid;
+//    opacity: 0.5;
+// }
 
-// #login_btn_disabled {
-//   background-color: #4cb5f9;
-//   border: 1px rgba(202, 224, 249, 1) solid;
-//   opacity: 0.5;
+// #login_btn {
+//   background-color: #0095f6;
+//   border: #0095f6;
+//   margin: 8px 0;
+//   color: white;
+//   height: 30px;
+//   opacity: 1;
+//   border-radius: 3px;
 // }

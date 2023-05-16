@@ -1,28 +1,3 @@
-:root {
-  /*Font*/
-  --logo-font: "Lobster", cursive;
-  --text-font: "Noto Sans", sans-serif;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  padding: 0;
-  margin: 0;
-  height: 100vh;
-  position: relative;
-}
-
-p {
-  margin: 0;
-}
-
-ul {
-  padding-left: 0;
-}
-
 @media (max-width: 900px) {
   .feeds {
     width: 100%;
@@ -32,4 +7,17 @@ ul {
   .main-right {
     display: none;
   }
+}
+
+* {
+  box-sizing: border-box;
+  font-family: $textFont;
+  font-size: 14px;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  position: relative;
 }

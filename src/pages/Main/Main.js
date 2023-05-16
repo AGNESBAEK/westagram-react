@@ -115,7 +115,7 @@ function Main() {
           </div>
 
           <div className="contents">
-            <a href="/">jy_baek</a>
+            <span>jy_baek</span>
             <span>위워크에서 진행된 베이킹 클래스...</span>
             <span>더 보기</span>
             <div>42분 전</div>
